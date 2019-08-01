@@ -1,18 +1,29 @@
 
 spring:
   application:
-    name: zhs-eureka    # ��������
+    name: zhs-eureka    # 服务名称
 
 
 server:
-  port: 9000    # �˿ں�
+  port: 9000    # 端口号
 
 eureka:
   instance:
-    hostname: localhost    # ���õ�ǰʵ������������
+    hostname: localhost    # 当前实例的主机名称
+
+  server:
+    # 当Eureka服务器在短时间内丢失过多客户端时，自我保护模式可使服务端不再删除失去连接的客户端
+    # 关闭保护机制，以确保注册中心可以将不可用的实例正确剔除
+    enable-self-preservation: false    # 是否允许开启自我保护模式，缺省：true
+    eviction-interval-timer-in-ms: 60000   # Eureka服务器清理无效节点的时间间隔，单位：毫秒，默认 60000 毫秒（60 秒）
+    peer-eureka-nodes-update-interval-ms: 600000    # Peer节点更新间隔，单位：毫秒
+    # 自我保护机制的工作机制是如果在15分钟内超过85%的客户端节点都没有正常的心跳
+    renewal-percent-threshold: 0.85    # 表示 Eureka Server 开启自我保护的系数，默认：0.85。
+
 
   client:
-    service-url: http://${eureka.instance.hostname}:${server.port}/eureka/    # http://localhost:9000/eureka/
-    fetch-registry: false    # �Ƿ��Eureka Server��ȡע����Ϣ��Ĭ��Ϊtrue
-    register-with-eureka: false    # �Ƿ��Լ�ע�ᵽEureka Server��Ĭ��Ϊtrue
+    service-url:
+     defaultZone: http://${eureka.instance.hostname}:${server.port}/eureka/    # http://localhost:9000
+    fetch-registry: false    # 是否从Eureka Server获取注册信息，默认为true
+    register-with-eureka: false    # 是否将自己注册到Eureka Server，默认为true
 
