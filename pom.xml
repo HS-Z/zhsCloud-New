@@ -6,6 +6,8 @@
 	<packaging>pom</packaging>
 	<modules>
 		<module>zhs-eureka</module>
+		<module>zhs-admin</module>
+		<module>zhs-common</module>
 	</modules>
 
 	<parent>
@@ -24,6 +26,7 @@
 	<properties>
 		<java.version>1.8</java.version>
 		<spring-cloud.version>Greenwich.SR2</spring-cloud.version>
+		<spring-boot-admin.version>2.1.5</spring-boot-admin.version>
 	</properties>
 
 	<dependencies>
@@ -63,6 +66,22 @@
 			</plugin>
 		</plugins>
 	</build>
+
+
+	<!--阿里云镜像-->
+	<repositories>
+		<repository>
+			<id>alimaven</id>
+			<name>aliyun maven</name>
+			<url>http://maven.aliyun.com/nexus/content/groups/public/</url>
+			<releases>
+				<enabled>true</enabled>
+			</releases>
+			<snapshots>
+				<enabled>false</enabled>
+			</snapshots>
+		</repository>
+	</repositories>
 
 </project>
 

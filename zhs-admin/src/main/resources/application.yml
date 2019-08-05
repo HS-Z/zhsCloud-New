@@ -1,0 +1,14 @@
+# 说明文档
+# http://codecentric.github.io/spring-boot-admin/2.1.5/
+
+spring:
+  application:
+    name: zhs-admin    # 服务名称
+
+server:
+  port: 9100    # 端口号
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:9000/eureka/
