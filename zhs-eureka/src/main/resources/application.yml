@@ -23,7 +23,6 @@ eureka:
 
   client:
     service-url:
-     defaultZone: http://${eureka.instance.hostname}:${server.port}/eureka/    # http://localhost:9000
+      defaultZone: http://${eureka.instance.hostname}:${server.port}/eureka/    # http://localhost:9000
     fetch-registry: false    # 是否从Eureka Server获取注册信息，默认为true
     register-with-eureka: false    # 是否将自己注册到Eureka Server，默认为true
-
