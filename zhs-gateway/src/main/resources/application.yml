@@ -1,0 +1,11 @@
+spring:
+  application:
+    name: zhs-gateway    # 服务名称
+
+server:
+  port: 9200    # 端口号
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:9000/eureka/
