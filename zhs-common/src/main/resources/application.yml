@@ -8,12 +8,12 @@ server:
 
 eureka:
   instance:
-    leaseRenewalIntervalInSeconds: 10
+    leaseRenewalIntervalInSeconds: 10    # 表示eureka client发送心跳给server端的频率，默认30秒
     health-check-url-path: /actuator/health
     metadata-map:
-      startup: ${random.int}    #needed to trigger info and endpoint update after restart
+      startup: "hello zhs"    #needed to trigger info and endpoint update after restart
   client:
-    registryFetchIntervalSeconds: 5
+    registryFetchIntervalSeconds: 5    # 表示eureka client间隔多久去拉取服务注册信息，默认为30秒
     service-url:
       defaultZone: http://localhost:9000/eureka/
 
@@ -25,3 +25,16 @@ management:
   endpoint:
       health:
           show-details: ALWAYS
+
+logging:
+  file: log/zhs-common/my.log
+  pattern:
+    file: %clr(%d{yyyy-MM-dd HH:mm:ss.SSS}){faint} %clr(%5p) %clr(${PID}){magenta} %clr(---){faint} %clr([%15.15t]){faint} %clr(%-40.40logger{39}){cyan} %clr(:){faint} %m%n%wEx
+
+
+info:
+  tags:
+    environment: dev
+  version: @project.version@
+  groupId: @project.groupId@
+  artifactId: @project.artifactId@

@@ -4,6 +4,10 @@
 spring:
   application:
     name: zhs-admin    # 服务名称
+  boot:
+    admin:
+      ui:
+        title: zhs-springboot-admin
 
 server:
   port: 9100    # 端口号
