@@ -11,10 +11,10 @@ import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
 @SpringBootApplication
 @EnableEurekaClient
 @EnableAdminServer
-public class ZhsAdminApplication {
+public class ZhsMonitorApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(ZhsAdminApplication.class, args);
+        SpringApplication.run(ZhsMonitorApplication.class, args);
     }
 
 }

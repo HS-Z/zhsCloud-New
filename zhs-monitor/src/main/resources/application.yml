@@ -3,7 +3,7 @@
 
 spring:
   application:
-    name: zhs-admin    # 服务名称
+    name: zhs-monitor    # 服务名称
   boot:
     admin:
       ui:

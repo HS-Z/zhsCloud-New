@@ -6,9 +6,10 @@
 	<packaging>pom</packaging>
 	<modules>
 		<module>zhs-eureka</module>
-		<module>zhs-admin</module>
+		<module>zhs-monitor</module>
 		<module>zhs-common</module>
-	</modules>
+        <module>zhs-gateway</module>
+    </modules>
 
 	<parent>
 		<groupId>org.springframework.boot</groupId>
