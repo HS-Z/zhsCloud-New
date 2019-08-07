@@ -4,10 +4,6 @@
 spring:
   application:
     name: zhs-monitor    # 服务名称
-  boot:
-    admin:
-      ui:
-        title: zhs-springboot-admin
 
 server:
   port: 9100    # 端口号
@@ -16,3 +12,10 @@ eureka:
   client:
     service-url:
       defaultZone: http://localhost:9000/eureka/
+  instance:
+    status-page-url-path: /    # 从 eureka 服务列表页面直接点击 zhs-monitor 服务时，直接可进去服务监控页面
+
+
+info:
+  version: 1.0.0
+  description: 服务监控

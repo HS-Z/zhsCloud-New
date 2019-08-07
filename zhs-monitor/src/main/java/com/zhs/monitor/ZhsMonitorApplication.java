@@ -1,4 +1,4 @@
-package com.zhs.admin;
+package com.zhs.monitor;
 
 import de.codecentric.boot.admin.server.config.EnableAdminServer;
 import org.springframework.boot.SpringApplication;
