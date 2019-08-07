@@ -17,5 +17,8 @@ eureka:
 
 
 info:
-  version: 1.0.0
+  environment: dev
   description: 服务监控
+  version: @project.version@
+  groupId: @project.groupId@
+  artifactId: @project.artifactId@
