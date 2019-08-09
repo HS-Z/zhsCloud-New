@@ -1,0 +1,42 @@
+spring:
+  application:
+    name: zhs-admin
+  datasource:
+    url: jdbc:mysql://localhost:3306/zhs-basic?useUnicode=true&characterEncoding=utf-8&useSSL=false&serverTimezone=GMT%2B8
+    username: root
+    password: H78Jkf00ue
+    driver-class-name: com.mysql.jdbc.Driver
+  mvc:
+    view:
+      prefix: classpath:/templates/    # 定位模板的目录
+      suffix: .html   # 给返回的页面添加后缀名
+server:
+  port: 10000    # 端口号
+
+
+eureka:
+  instance:
+    leaseRenewalIntervalInSeconds: 10    # 表示eureka client发送心跳给server端的频率，默认30秒
+  client:
+    registryFetchIntervalSeconds: 5    # 表示eureka client间隔多久去拉取服务注册信息，默认为30秒
+    service-url:
+      defaultZone: http://localhost:9000/eureka/
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+  endpoint:
+    health:
+      show-details: ALWAYS
+
+logging:
+  file: log/zhs-admin/my.log
+
+info:
+  tags:
+    environment: dev
+  version: @project.version@
+  groupId: @project.groupId@
+  artifactId: @project.artifactId@
