@@ -1,5 +1,8 @@
 package com.zhs.common.model;
 
+import tk.mybatis.mapper.annotation.KeySql;
+
+import javax.persistence.Id;
 import java.io.Serializable;
 import java.util.Date;
 
@@ -9,6 +12,8 @@ import java.util.Date;
 public class CommonModel implements Serializable{
 
 
+    @Id
+    @KeySql(useGeneratedKeys = true)
     private Long id;
 
     private String creator;    //创建人
