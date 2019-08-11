@@ -13,7 +13,7 @@ public class CommonModel implements Serializable{
 
 
     @Id
-    @KeySql(useGeneratedKeys = true)
+    @KeySql(useGeneratedKeys = true)    //使用JDBC 的方式获取数据库自增的主键值
     private Long id;
 
     private String creator;    //创建人

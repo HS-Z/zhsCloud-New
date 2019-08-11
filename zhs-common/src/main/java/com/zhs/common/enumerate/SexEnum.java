@@ -1,13 +1,13 @@
-package com.zhs.admin.enumeration;
+package com.zhs.common.enumerate;
 
 /**
- * Created by Zhang on 2019/8/9.
+ * Created by zhs on 2019/8/10.
  */
 public enum SexEnum {
 
     MALE,    //男
     FEMALE,    //女
     SECRECY,    //保密
-    UNKNOWN;    //未知
+    UNKNOWN    //未知
 
 }
