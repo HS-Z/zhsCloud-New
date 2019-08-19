@@ -38,6 +38,7 @@ public class ShiroConfig {
         filterChainDefinitionMap.put("/fonts/**", "anon");
         filterChainDefinitionMap.put("/img/**", "anon");
         filterChainDefinitionMap.put("/js/**", "anon");
+        filterChainDefinitionMap.put("/aa/**", "anon");
 
         filterChainDefinitionMap.put("/login", "anon");   //跳转到登陆页面
         filterChainDefinitionMap.put("/register", "anon");  //跳转到注册页面

@@ -11,7 +11,7 @@ spring:
       prefix: classpath:/templates/    # 定位模板的目录
       suffix: .html   # 给返回的页面添加后缀名
 server:
-  port: 10000    # 端口号
+  port: 9500    # 端口号
 
 
 eureka:

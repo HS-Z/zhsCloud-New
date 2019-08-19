@@ -13,7 +13,13 @@ public class LoginController {
 
     @RequestMapping(value = "login",method = RequestMethod.GET)
     public String login(){
-        return "login";
+        return "index";
+    }
+
+
+    @RequestMapping(value = "index",method = RequestMethod.GET)
+    public String index(){
+        return "index";
     }
 
 
