@@ -32,13 +32,12 @@ public class ShiroConfig {
         //拦截器.
         Map<String,String> filterChainDefinitionMap = new LinkedHashMap<>();
 
-        // 配置不会被拦截的链接 顺序判断
+        /*// 配置不会被拦截的链接 顺序判断
         filterChainDefinitionMap.put("/static/**", "anon");  //设置html页面访问static下的静态资源不被拦截
-        filterChainDefinitionMap.put("/css/**", "anon");
-        filterChainDefinitionMap.put("/fonts/**", "anon");
-        filterChainDefinitionMap.put("/img/**", "anon");
-        filterChainDefinitionMap.put("/js/**", "anon");
+
         filterChainDefinitionMap.put("/aa/**", "anon");
+        filterChainDefinitionMap.put("/WeAdmin/**", "anon");
+        filterChainDefinitionMap.put("/layui/**", "anon");
 
         filterChainDefinitionMap.put("/login", "anon");   //跳转到登陆页面
         filterChainDefinitionMap.put("/register", "anon");  //跳转到注册页面
@@ -50,7 +49,7 @@ public class ShiroConfig {
         filterChainDefinitionMap.put("/logout", "logout");
 
         // authc:所有url都必须认证通过才可以访问; anon:所有url都可以匿名访问
-        filterChainDefinitionMap.put("/**", "authc");    // 一般将这行代码放到最下面，此处是坑
+        filterChainDefinitionMap.put("/**", "authc");    // 一般将这行代码放到最下面，此处是坑*/
 
         shiroFilterFactoryBean.setFilterChainDefinitionMap(filterChainDefinitionMap);
         return shiroFilterFactoryBean;
