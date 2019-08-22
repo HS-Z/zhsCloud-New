@@ -8,9 +8,9 @@
 			"url": "",
 			"children": [{
 				"id": 2,
-				"name": "会员列表",
+				"name": "用户列表",
 				"icon": "",
-				"url": "./pages/member/list.html"
+				"url": "userInfo/list"
 			}, {
 				"id": 3,
 				"name": "会员删除",

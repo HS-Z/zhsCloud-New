@@ -6,4 +6,7 @@ import tk.mybatis.mapper.common.Mapper;
 public interface UserInfoMapper extends Mapper<UserInfo> {
 
 
+    UserInfo findByAccount(String account);
+
+
 }

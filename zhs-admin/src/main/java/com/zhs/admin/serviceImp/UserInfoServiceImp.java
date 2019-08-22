@@ -20,10 +20,12 @@ public class UserInfoServiceImp implements UserInfoService {
      */
     @Override
     public UserInfo findByAccount(String account) {
-        UserInfo user = new UserInfo();
-        user.setAccount(account);
-        UserInfo userInfo = userInfoMapper.selectOne(user);
-        return userInfo;
+        return userInfoMapper.findByAccount(account);
+    }
+
+    @Override
+    public UserInfo findById(Long id) {
+        return userInfoMapper.selectByPrimaryKey(id);
     }
 
 

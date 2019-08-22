@@ -36,12 +36,12 @@ body {
 .rightMenu li {
   display: block;
   padding: 4px 10px;
-  color: #CCC;
+  color: #1F1F1F;
   border-bottom: 1px solid #F2F2F2;
 }
 .rightMenu li:hover {
-  background: #EEE;
-  color: #666;
+  background: #009688;
+  color: #FFFFFF;
 }
 /**treeselect*/
 .layui-form-select .layui-tree {

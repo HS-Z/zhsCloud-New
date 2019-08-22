@@ -40,3 +40,6 @@ info:
   version: @project.version@
   groupId: @project.groupId@
   artifactId: @project.artifactId@
+
+mybatis:
+  mapper-locations: classpath:mapper/*Mapper.xml
