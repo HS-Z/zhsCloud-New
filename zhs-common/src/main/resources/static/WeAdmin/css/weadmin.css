@@ -620,3 +620,9 @@ table td {
   background-color: #999;
 }
 /*# sourceMappingURL=weadmin.css.map */
+
+
+.layui-nav .layui-nav-item ul a:hover {
+  background: #009688;
+  color: #FFFFFF;
+}

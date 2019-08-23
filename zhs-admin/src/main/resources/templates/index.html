@@ -20,47 +20,28 @@
 
 	<body>
 		<!-- 顶部开始 -->
-		<div class="container">
+		<ul class="container">
 			<div class="logo">
 				<a href="./index.html">WeAdmin v1.0</a>
 			</div>
 			<div class="left_open">
-				 <!--<i title="展开左侧栏" class="iconfont">&#xe699;</i>-->
 				<i title="展开左侧栏" class="layui-icon layui-icon-shrink-right"></i>
-				
 			</div>
-			<ul class="layui-nav left fast-add" lay-filter="">
-				<li class="layui-nav-item">
-					<a href="javascript:;">+新增</a>
-					<dl class="layui-nav-child">
-						<!-- 二级菜单 -->
-						<dd>
-							<a onclick="WeAdminShow('资讯','https://www.baidu.com/')"><i class="layui-icon layui-icon-list"></i>资讯</a>
-						</dd>
-						<dd>
-							<a onclick="WeAdminShow('图片','http://www.baidu.com')"><i class="layui-icon layui-icon-picture-fine"></i>图片</a>
-						</dd>
-						<dd>
-							<a onclick="WeAdminShow('用户','https://www.jiuwei.com/')"><i class="layui-icon layui-icon-user"></i>用户</a>
-						</dd>
-					</dl>
-				</li>
-			</ul>
 			<ul class="layui-nav right" lay-filter="">
 				<li class="layui-nav-item">
 					<a href="javascript:;">超级管理员</a>
-					<dl class="layui-nav-child">
+					<ul class="layui-nav-child">
 						<!-- 二级菜单 -->
-						<dd>
+						<li>
 							<a onclick="WeAdminShow('个人信息','http://www.baidu.com')">个人信息</a>
-						</dd>
-						<dd>
+						</li>
+						<li>
 							<a onclick="WeAdminShow('切换帐号','./login.html')">切换帐号</a>
-						</dd>
-						<dd>
+						</li>
+						<li>
 							<a class="loginout" href="./login.html">退出</a>
-						</dd>
-					</dl>
+						</li>
+					</ul>
 				</li>
 				<li class="layui-nav-item to-index">
 					<a href="https://www.jiuwei.com/" target="_blank">前台首页</a>
