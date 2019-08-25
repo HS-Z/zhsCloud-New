@@ -3,12 +3,15 @@ package com.zhs.admin.controller;
 import com.zhs.admin.model.UserInfo;
 import com.zhs.admin.service.UserInfoService;
 import com.zhs.common.model.Json;
+import com.zhs.common.model.QueryInfo;
+import com.zhs.common.model.RequestPageInfo;
+import com.zhs.common.model.ResponsePageInfo;
 import com.zhs.common.utils.CommonUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.*;
+
 
 @Controller
 @RequestMapping("userInfo")
@@ -18,6 +21,22 @@ public class UserInfoController {
     private CommonUtils commonUtils;
     @Autowired
     private UserInfoService userInfoService;
+
+
+    @RequestMapping(value = "toUserInfoList",method = RequestMethod.GET)
+    public String toUserInfoList(Model model){
+        return "user/userInfoList";
+    }
+
+
+    @RequestMapping(value = "queryUserInfoList",method = {RequestMethod.POST,RequestMethod.GET})
+    @ResponseBody
+    public ResponsePageInfo queryUserInfoList(RequestPageInfo requestPageInfo, QueryInfo queryInfo){
+
+        ResponsePageInfo responsePageInfo = userInfoService.queryUserInfoList(requestPageInfo,queryInfo);
+
+        return responsePageInfo;
+    }
 
 
     @RequestMapping(value = "saveUserInfo",method = RequestMethod.GET)
@@ -48,6 +67,9 @@ public class UserInfoController {
             return Json.fail("失败");
         }
     }
+
+
+
 
 
 }

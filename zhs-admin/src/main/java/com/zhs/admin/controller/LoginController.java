@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+
 /**
  * Created by Zhang on 2019/8/12.
  */
@@ -32,7 +33,7 @@ public class LoginController {
     }
 
 
-    @RequestMapping(value = "loginSystem",method = {RequestMethod.POST, RequestMethod.GET})
+    @RequestMapping(value = "loginSystem",method = {RequestMethod.POST})
     @ResponseBody
     public Json loginSystem(@RequestParam("account") String account, @RequestParam("password") String password){
         try {

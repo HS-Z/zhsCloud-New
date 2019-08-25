@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>用户列表</title>
+
+    <script type="text/javascript" src="/common/jQuery/jQuery-3.4.1.js" charset="utf-8"></script>
+    <script type="text/javascript" src="/layui/layui.js" charset="utf-8"></script>
+    <link rel="stylesheet" href="/layui/css/layui.css">
+    <link rel="stylesheet" href="/WeAdmin/css/weadmin.css">
+    <link rel="stylesheet" href="/WeAdmin/css/font.css">
+
+</head>
+<body>
+
+<table id="tableList" lay-filter="test"></table>
+
+</body>
+
+<script th:inline="none">
+
+    layui.use(['table'], function(){
+        var table = layui.table;
+
+        //第一个实例
+        table.render({
+            title:"用户信息表",
+            elem: '#tableList',
+            url: '/userInfo/queryUserInfoList', //数据接口
+            method: 'post',
+            page: true, //开启分页,
+            where: {code:'aaa'},
+            cols: [[
+                {field: 'id', title: 'id', hide: true},
+                {field: 'userName', title: '用户名',fixed: 'left'},
+                {field: 'account', title: '账号'},
+                {field: 'sex', title: '性别', sort: true},
+                {field: 'email', title: '邮箱'},
+                {field: 'phone', title: '手机号码'},
+                {field: 'lastLoginTime', title: '最近一次登陆时间', sort: true},
+                {field: 'isAdmin', title: '管理员', sort: true}
+            ]]
+        });
+
+    });
+
+</script>
+
+</html>

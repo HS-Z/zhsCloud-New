@@ -33,6 +33,7 @@
 		<tk.mybatis.version>2.1.5</tk.mybatis.version>
 		<shiro.version>1.4.0</shiro.version>
 		<p6spy.version>3.8.3</p6spy.version>
+		<pagehelper.version>1.2.12</pagehelper.version>
 	</properties>
 
 	<dependencies>

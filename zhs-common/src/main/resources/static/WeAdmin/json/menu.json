@@ -10,7 +10,7 @@
 				"id": 2,
 				"name": "用户列表",
 				"icon": "",
-				"url": "userInfo/list"
+				"url": "userInfo/toUserInfoList"
 			}, {
 				"id": 3,
 				"name": "会员删除",
