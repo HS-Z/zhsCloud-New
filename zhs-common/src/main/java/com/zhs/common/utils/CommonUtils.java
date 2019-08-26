@@ -1,9 +1,12 @@
 package com.zhs.common.utils;
 
+import org.apache.commons.lang.StringUtils;
 import org.apache.shiro.crypto.hash.SimpleHash;
 import org.apache.shiro.util.ByteSource;
 import org.springframework.stereotype.Component;
 
+import java.util.Collection;
+import java.util.Map;
 import java.util.UUID;
 
 /**
@@ -44,6 +47,50 @@ public class CommonUtils {
         String newData = new SimpleHash("MD5", data, newSalt, 1024).toHex();
 
         return newData;
+    }
+
+
+    /**
+     * 判断一个对象是否为null或为空
+     * @param o
+     * @return
+     */
+    public static boolean isEmpty(Object o){
+
+        if (o == null){
+            return true;
+        }
+
+        if (o instanceof String){
+            if (StringUtils.isBlank(o.toString())){
+                return true;
+            }
+        }else if (o instanceof Collection){
+            if ( ( (Collection) o ).isEmpty()){
+                return true;
+            }
+        }else if (o.getClass().isArray()){
+            if ( ((Object[]) o).length == 0 ){
+                return true;
+            }
+        }else if (o instanceof Map){
+            if (((Map) o).isEmpty()){
+                return true;
+            }
+        }else {
+            return false;
+        }
+        return false;
+    }
+
+
+    /**
+     * 判断一个对象是否为null或为空
+     * @param o
+     * @return
+     */
+    public static boolean isNotEmpty(Object o){
+        return !isEmpty(o);
     }
 
 

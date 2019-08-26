@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 80011
 File Encoding         : 65001
 
-Date: 2019-08-12 22:31:57
+Date: 2019-08-26 20:03:31
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -21,6 +21,11 @@ SET FOREIGN_KEY_CHECKS=0;
 DROP TABLE IF EXISTS `t_zhs_user_info`;
 CREATE TABLE `t_zhs_user_info` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
+  `creator` varchar(255) COLLATE utf8mb4_general_ci DEFAULT '' COMMENT '创建人',
+  `last_editor` varchar(255) COLLATE utf8mb4_general_ci DEFAULT '' COMMENT '最后编辑人',
+  `create_date` datetime DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP COMMENT '创建时间',
+  `last_edit_date` datetime DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP COMMENT '最后编辑时间',
+  `deleted` char(1) COLLATE utf8mb4_general_ci DEFAULT NULL,
   `user_name` varchar(255) COLLATE utf8mb4_general_ci DEFAULT '' COMMENT '用户名称（昵称）',
   `user_type` varchar(255) COLLATE utf8mb4_general_ci DEFAULT '' COMMENT '用户类型',
   `sex` varchar(10) COLLATE utf8mb4_general_ci DEFAULT '' COMMENT 'sex',
@@ -40,4 +45,4 @@ CREATE TABLE `t_zhs_user_info` (
   KEY `account_index` (`account`),
   KEY `email_index` (`email`),
   KEY `phone_index` (`phone`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci COMMENT='用户信息表';
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci COMMENT='用户信息表';
