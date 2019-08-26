@@ -13,7 +13,29 @@
 </head>
 <body>
 
-<table id="tableList" lay-filter="test"></table>
+
+<div class="weadmin-body">
+    <div class="layui-row">
+        <form class="layui-form layui-col-md12">
+
+            <div class="layui-form-item">
+                <div class="layui-inline layui-col-md3">
+                    <input type="text" name="username" placeholder="用户名或账号" autocomplete="off" class="layui-input" />
+                </div>
+                <div class="layui-inline layui-col-md3">
+                    <input type="text" name="username" placeholder="邮箱或手机号码" autocomplete="off" class="layui-input" />
+                </div>
+                <button class="layui-btn" lay-submit="" lay-filter="sreach">
+                    <i class="layui-icon layui-icon-search"></i>
+                </button>
+            </div>
+        </form>
+    </div>
+
+    <table id="tableList" lay-filter="test"></table>
+
+</div>
+
 
 </body>
 
