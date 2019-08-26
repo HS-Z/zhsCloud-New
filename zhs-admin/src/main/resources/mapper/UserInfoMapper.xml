@@ -7,4 +7,12 @@
         select * from t_zhs_user_info where account = #{account}
     </select>
 
+    <select id="queryUserInfoList" resultType="map" parameterType="com.zhs.common.model.QueryInfo">
+        select id, creator, last_editor as lastEditor, create_date as createDate, last_edit_date as lastEditDate, deleted,
+        user_name as userName ,user_type as userType, sex, account, password, security, email, phone, address,
+        last_login_time as lastLoginTime, is_admin as isAdmin, is_lock as isLock, lock_time as lockTime, log_out as logOut,
+        log_out_time as logOutTime
+        from t_zhs_user_info
+    </select>
+
 </mapper>

@@ -55,9 +55,8 @@ public class UserInfoServiceImp extends CommonService implements UserInfoService
     public ResponsePageInfo queryUserInfoList(RequestPageInfo requestPageInfo, QueryInfo queryInfo) {
 
         Page page = PageHelper.startPage(requestPageInfo.getPage(),requestPageInfo.getLimit());
-        List userInfoList = userInfoMapper.selectAll();
-        ResponsePageInfo responsePageInfo = pageHelperService.pageHelper(page);
-        responsePageInfo.setData(userInfoList);
+        List userInfoList = userInfoMapper.queryUserInfoList(queryInfo);
+        ResponsePageInfo responsePageInfo = pageHelperService.pageHelper(page,userInfoList);
         return responsePageInfo;
     }
 

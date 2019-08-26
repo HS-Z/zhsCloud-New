@@ -5,6 +5,8 @@ import com.github.pagehelper.Page;
 import com.zhs.common.model.ResponsePageInfo;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 /**
  * Mybatis的分页
  */
@@ -17,9 +19,11 @@ public class PageHelperService {
      * @param page
      * @return
      */
-    public ResponsePageInfo pageHelper(Page<Object> page){
+    public ResponsePageInfo pageHelper(Page page, List dataList){
 
         ResponsePageInfo responsePageInfo = new ResponsePageInfo();
+        responsePageInfo.setCode("0");
+        responsePageInfo.setMsg("");
 
         if (page.size() < 0){
             throw new RuntimeException("数据分页错误");
@@ -31,6 +35,7 @@ public class PageHelperService {
         int pages = page.getPages();  //总页数
 
         responsePageInfo.setCount(total);
+        responsePageInfo.setData(dataList);
 
         return responsePageInfo;
     }
