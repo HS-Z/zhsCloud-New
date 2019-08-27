@@ -4,11 +4,7 @@
     <meta charset="UTF-8">
     <title>用户列表</title>
 
-    <script type="text/javascript" src="/common/jQuery/jQuery-3.4.1.js" charset="utf-8"></script>
-    <script type="text/javascript" src="/layui/layui.js" charset="utf-8"></script>
-    <link rel="stylesheet" href="/layui/css/layui.css">
-    <link rel="stylesheet" href="/WeAdmin/css/weadmin.css">
-    <link rel="stylesheet" href="/WeAdmin/css/font.css">
+    <script src="/include.js"></script>
 
 </head>
 <body>
@@ -16,7 +12,7 @@
 
 <div class="weadmin-body">
     <div class="layui-row">
-        <form class="layui-form layui-col-md12" id="formInfo">
+        <form class="layui-form layui-col-md12" id="searchForm">
 
             <div class="layui-form-item">
                 <div class="layui-inline layui-col-md3">
@@ -25,7 +21,7 @@
                 <div class="layui-inline layui-col-md3">
                     <input type="text" name="code" placeholder="邮箱或手机号码" autocomplete="off" class="layui-input" />
                 </div>
-                <button class="layui-btn" lay-submit="" lay-filter="sreach">
+                <button type="button" class="layui-btn" lay-submit="" lay-filter="search" id="search">
                     <i class="layui-icon layui-icon-search"></i>
                 </button>
             </div>
@@ -44,8 +40,7 @@
     layui.use(['table'], function(){
         var table = layui.table;
 
-        var formInfo=$("#formInfo").serialize();  //form表单
-        console.log(formInfo);
+        var params = formJson('searchForm');   //form 表单序列化并转json
 
         //第一个实例
         table.render({
@@ -54,7 +49,7 @@
             url: '/userInfo/queryUserInfoList', //数据接口
             method: 'post',
             page: true, //开启分页,
-            where: formInfo,
+            where: params,
             toolbar: true,
             cols: [[
                 {field: 'id', title: 'id', hide: true},
@@ -104,6 +99,19 @@
                     ,title: 'xxx'
                 });
             }
+        });
+        
+        
+        $("#search").click(function () {
+
+            var params = formJson('searchForm');   //form 表单序列化并转json
+
+            table.reload('tableList', {
+                where: params,
+                page: {
+                    curr: 1 //重新从第 1 页开始
+                }
+            });
         });
 
     });
