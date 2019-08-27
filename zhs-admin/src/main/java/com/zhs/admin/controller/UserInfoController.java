@@ -69,4 +69,16 @@ public class UserInfoController {
     }
 
 
+    @RequestMapping(value = "deleteById",method = {RequestMethod.POST})
+    @ResponseBody
+    public Json deleteById(Long id){
+        try {
+            userInfoService.deleteById(id);
+            return Json.ok("删除成功");
+        }catch (Exception e){
+            return Json.fail("删除失败");
+        }
+    }
+
+
 }

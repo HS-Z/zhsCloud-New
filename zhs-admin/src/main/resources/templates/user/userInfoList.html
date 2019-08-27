@@ -82,13 +82,19 @@
             var tr = obj.tr; //获得当前行 tr 的DOM对象
 
             if(layEvent === 'detail'){ //查看
-                alert(111);
                 //do somehing
             } else if(layEvent === 'del'){ //删除
-                layer.confirm('真的删除行么', function(index){
-                    obj.del(); //删除对应行（tr）的DOM结构，并更新缓存
-                    layer.close(index);
-                    //向服务端发送删除指令
+                layer.confirm('真的删除该行吗', function(index){
+
+                    $.post("/userInfo/deleteById", {id: data.id}, function (result) {
+                        debugger;
+                        if (result.success) {
+                            window.location.reload();
+                        } else {
+                            layer.msg(result.msg,{icon: 5});
+                        }
+                    }, "json");
+
                 });
             } else if(layEvent === 'edit'){ //编辑
                 //do something

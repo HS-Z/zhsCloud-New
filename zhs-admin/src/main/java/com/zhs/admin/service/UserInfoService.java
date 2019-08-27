@@ -19,5 +19,7 @@ public interface UserInfoService {
 
     ResponsePageInfo queryUserInfoList(RequestPageInfo requestPageInfo, QueryInfo queryInfo);
 
+    void deleteById(Long id);
+
 
 }

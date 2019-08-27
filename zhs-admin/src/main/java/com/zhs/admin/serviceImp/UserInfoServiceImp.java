@@ -60,4 +60,9 @@ public class UserInfoServiceImp extends CommonService implements UserInfoService
         return responsePageInfo;
     }
 
+    @Override
+    public void deleteById(Long id) {
+        userInfoMapper.deleteByPrimaryKey(id);
+    }
+
 }
