@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>用户明细</title>
+
+    <script src="/include.js"></script>
+
+</head>
+<body>
+
+
+<div class="weadmin-body">
+
+    <form class="layui-form layui-form-pane">
+        <div class="layui-form-item">
+            <label class="layui-form-label">用户名</label>
+            <div class="layui-input-block">
+                <input type="text" class="layui-input" th:value="${userInfo.userName}" readonly>
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">用户类型</label>
+            <div class="layui-input-block">
+                <input type="text" class="layui-input" th:value="${userInfo.userType}" readonly>
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">账号</label>
+            <div class="layui-input-block">
+                <input type="text" class="layui-input" th:value="${userInfo.account}" readonly>
+            </div>
+        </div>
+        <div class="layui-form-item" th:if="${userInfo.createDate != null}">
+            <label class="layui-form-label">注册时间</label>
+            <div class="layui-input-block">
+                <input type="text" class="layui-input" th:if="${userInfo.createDate != null}" th:value="${#dates.format(userInfo.createDate, 'yyyy-MM-dd HH:mm')}" readonly>
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">性别</label>
+            <div class="layui-input-block">
+                <input type="text" class="layui-input" th:value="${userInfo.sex}" readonly>
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">邮箱</label>
+            <div class="layui-input-block">
+                <input type="text" class="layui-input" th:value="${userInfo.email}" readonly>
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">手机号码</label>
+            <div class="layui-input-block">
+                <input type="text" class="layui-input" th:value="${userInfo.phone}" readonly>
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">住址</label>
+            <div class="layui-input-block">
+                <input type="text" class="layui-input" th:value="${userInfo.address}" readonly>
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">是否管理员</label>
+            <div class="layui-input-block">
+                <input type="text" class="layui-input" th:value="${userInfo.admin ? '是':'否' }" readonly>
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">是否锁定</label>
+            <div class="layui-input-block">
+                <input type="text" class="layui-input" th:value="${userInfo.lock ? '是':'否' }" readonly>
+            </div>
+        </div>
+        <div class="layui-form-item" th:if="${userInfo.lockTime != null}">
+            <label class="layui-form-label">锁定时间</label>
+            <div class="layui-input-block">
+                <input type="text" class="layui-input" th:if="${userInfo.lockTime != null}" th:value="${#dates.format(userInfo.lockTime, 'yyyy-MM-dd HH:mm')}" readonly>
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">是否注销</label>
+            <div class="layui-input-block">
+                <input type="text" class="layui-input" th:value="${userInfo.logOut ? '是':'否' }" readonly>
+            </div>
+        </div>
+        <div class="layui-form-item" th:if="${userInfo.logOutTime != null}">
+            <label class="layui-form-label">注销时间</label>
+            <div class="layui-input-block">
+                <input type="text" class="layui-input" th:if="${userInfo.logOutTime != null}" th:value="${#dates.format(userInfo.logOutTime, 'yyyy-MM-dd HH:mm')}" readonly>
+            </div>
+        </div>
+    </form>
+
+</div>
+
+
+</body>
+
+<script th:inline="none">
+
+
+
+
+
+
+</script>
+
+
+</html>

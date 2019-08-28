@@ -10,14 +10,14 @@ public class EnumUtils {
      * @param value  枚举值
      * @return
      */
-    public String getSexEnumName(String value){
-        if (SexEnum.MALE.equals(value)){
+    public static String getSexEnumName(String value){
+        if (SexEnum.MALE.toString().equals(value)){
             return "男";
-        }else if (SexEnum.FEMALE.equals(value)){
+        }else if (SexEnum.FEMALE.toString().equals(value)){
             return "女";
-        }else if (SexEnum.SECRECY.equals(value)){
+        }else if (SexEnum.SECRECY.toString().equals(value)){
             return "保密";
-        }else if (SexEnum.UNKNOWN.equals(value)){
+        }else if (SexEnum.UNKNOWN.toString().equals(value)){
             return "未知";
         }else {
             return "";

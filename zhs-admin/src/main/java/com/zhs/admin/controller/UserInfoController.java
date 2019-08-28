@@ -7,6 +7,7 @@ import com.zhs.common.model.QueryInfo;
 import com.zhs.common.model.RequestPageInfo;
 import com.zhs.common.model.ResponsePageInfo;
 import com.zhs.common.utils.CommonUtils;
+import com.zhs.common.utils.EnumUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -78,6 +79,22 @@ public class UserInfoController {
         }catch (Exception e){
             return Json.fail("删除失败");
         }
+    }
+
+
+    /**
+     * 用户明细查看
+     * @param model 视图
+     * @param id  用户id
+     * @return
+     */
+    @RequestMapping(value = "view",method = RequestMethod.GET)
+    public String view(Model model, Long id){
+        UserInfo userInfo = userInfoService.findById(id);
+        String sex = EnumUtils.getSexEnumName(userInfo.getSex());
+        userInfo.setSex(sex);
+        model.addAttribute("userInfo",userInfo);
+        return "user/view";
     }
 
 

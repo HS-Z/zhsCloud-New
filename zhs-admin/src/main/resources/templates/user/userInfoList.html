@@ -37,7 +37,7 @@
 
 <script th:inline="none">
 
-    layui.use(['table'], function(){
+    layui.use(['table','layer'], function(){
         var table = layui.table;
 
         var params = formJson('searchForm');   //form 表单序列化并转json
@@ -56,11 +56,11 @@
                 {field: 'userName', title: '用户名',fixed: 'left'},
                 {field: 'account', title: '账号'},
                 {field: 'userType', title: '用户类型', sort: true},
-                {field: 'email', title: '邮箱'},
+//                {field: 'email', title: '邮箱'},
                 {field: 'phone', title: '手机号码'},
                 {field: 'lastLoginTime', title: '最近一次登陆时间', sort: true, align:'center',templet:'<div>{{ layui.util.toDateString(d.lastLoginTime, "yyyy-MM-dd HH:mm:ss") }}</div>'},
-                {field: 'isAdmin', title: '管理员', sort: true},
-                {field: '', title: '操作', fixed: 'right', align:'center', toolbar: '#barDemo'}
+//                {field: 'isAdmin', title: '管理员', sort: true},
+                {field: '', title: '操作', fixed: 'right', align:'center', toolbar: '#barDemo', width:180}
             ]],
             done: function(res, curr, count){
                 $("[data-field = 'isAdmin']").children().each(function(){
@@ -82,7 +82,15 @@
             var tr = obj.tr; //获得当前行 tr 的DOM对象
 
             if(layEvent === 'detail'){ //查看
-                //do somehing
+
+                layer.open({
+                    title: '用户详情',
+                    type: 2,
+                    area: ['60%', '90%'],
+                    maxmin: true,
+                    content: '/userInfo/view?id='+data.id
+                });
+
             } else if(layEvent === 'del'){ //删除
                 layer.confirm('真的删除该行吗', function(index){
 
