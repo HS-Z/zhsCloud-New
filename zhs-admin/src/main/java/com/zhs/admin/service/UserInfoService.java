@@ -21,5 +21,7 @@ public interface UserInfoService {
 
     void deleteById(Long id);
 
+    void saveOrUpdate(UserInfo userInfo);
+
 
 }

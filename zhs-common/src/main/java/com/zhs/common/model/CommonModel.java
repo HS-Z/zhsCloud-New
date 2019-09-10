@@ -22,9 +22,11 @@ public class CommonModel implements Serializable{
 
     private Date createDate;    //创建时间
 
-    private Date lastEditDate;    //最后编辑时间
+    private Date lastEditDate;    //最近更新时间
 
     private Boolean deleted = Boolean.FALSE;    //删除标记，默认为否
+
+    private String description;    //描述
 
 
 
@@ -76,4 +78,11 @@ public class CommonModel implements Serializable{
         this.deleted = deleted;
     }
 
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
 }

@@ -8,6 +8,7 @@ import com.zhs.common.model.RequestPageInfo;
 import com.zhs.common.model.ResponsePageInfo;
 import com.zhs.common.utils.CommonUtils;
 import com.zhs.common.utils.EnumUtils;
+import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -95,6 +96,50 @@ public class UserInfoController {
         userInfo.setSex(sex);
         model.addAttribute("userInfo",userInfo);
         return "user/view";
+    }
+
+
+    @RequestMapping(value = "toAddOrEdit",method = RequestMethod.GET)
+    public String toAddOrEdit(Model model, Long id){
+
+        if (id != null){
+            UserInfo userInfo = userInfoService.findById(id);
+            model.addAttribute("userInfo",userInfo);
+            return "user/editUserInfo";
+        }
+
+        return "user/addUserInfo";
+    }
+
+
+
+    @RequestMapping(value = "saveOrUpdate",method = RequestMethod.POST)
+    @ResponseBody
+    public Json saveOrUpdate(UserInfo userInfo){
+
+        try {
+
+            if (userInfo != null && userInfo.getId() == null){    //新增
+
+                if (StringUtils.isBlank(userInfo.getAccount())){
+                    return Json.fail("账号不能为空！");
+                }
+
+                UserInfo userInfo1 = userInfoService.findByAccount(userInfo.getAccount());
+
+                if (userInfo1 != null){
+                    return Json.fail("该账号已存在！");
+                }
+            }
+
+            userInfoService.saveOrUpdate(userInfo);
+
+            return Json.ok("用户信息已保存");
+
+        }catch (Exception e){
+            return Json.fail("用户信息保存失败！");
+        }
+
     }
 
 

@@ -60,7 +60,7 @@
                 {field: 'phone', title: '手机号码'},
                 {field: 'lastLoginTime', title: '最近一次登陆时间', sort: true, align:'center',templet:'<div>{{ layui.util.toDateString(d.lastLoginTime, "yyyy-MM-dd HH:mm:ss") }}</div>'},
 //                {field: 'isAdmin', title: '管理员', sort: true},
-                {field: '', title: '操作', fixed: 'right', align:'center', toolbar: '#barDemo', width:180}
+                {field: '', title: '操作', fixed: 'right', align:'center', toolbar: '#barDemo', width:200}
             ]],
             done: function(res, curr, count){
                 $("[data-field = 'isAdmin']").children().each(function(){
@@ -119,6 +119,20 @@
         //头工具栏事件
         table.on('toolbar(tableFilter)', function(obj){
             var checkStatus = table.checkStatus(obj.config.id);
+
+            if(obj.event === 'add'){ //查看
+
+                // window.location.href="/userInfo/toAddOrEdit";
+
+                layer.open({
+                    title: '用户新增',
+                    type: 2,
+                    area: ['60%', '90%'],
+                    maxmin: true,
+                    content: '/userInfo/toAddOrEdit'
+                });
+            }
+
             switch(obj.event){
                 case 'getCheckData':
                     var data = checkStatus.data;
@@ -162,7 +176,6 @@
 
 <script type="text/html" id="toolbarDemo">
     <div class="layui-btn-container">
-        <!--<button class="layui-btn" lay-event="getCheckData">新增</button>-->
         <button class="layui-btn layui-btn-sm" lay-event="deleteChoose">删除选择</button>
         <button class="layui-btn layui-btn-sm" lay-event="add">新增</button>
     </div>

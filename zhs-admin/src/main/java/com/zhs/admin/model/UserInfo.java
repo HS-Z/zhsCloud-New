@@ -29,7 +29,7 @@ public class UserInfo extends CommonModel{
 
     private String address;  //住址
 
-    private Date lastLoginTime;  //最近一次登陆时间（该值改变时，不更新lastUpdate）
+    private Date lastLoginTime;  //最近一次登陆时间（该值改变时，不更新 lastEditDate ）
 
     private Boolean isAdmin=Boolean.FALSE;  //是否是管理员
 
@@ -40,6 +40,9 @@ public class UserInfo extends CommonModel{
     private Boolean logOut=Boolean.FALSE;  //账号是否已注销，默认为否
 
     private Date logOutTime;  //账号注销时间
+
+
+
 
     public String getUserName() {
         return userName;

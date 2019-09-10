@@ -12,6 +12,7 @@ import com.zhs.common.service.CommonService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Date;
 import java.util.List;
 
 @Service
@@ -63,6 +64,47 @@ public class UserInfoServiceImp extends CommonService implements UserInfoService
     @Override
     public void deleteById(Long id) {
         userInfoMapper.deleteByPrimaryKey(id);
+    }
+
+    @Override
+    public void saveOrUpdate(UserInfo userInfo) {
+
+        if (userInfo != null){
+
+            if (userInfo.getId() == null){   //新增用户信息
+
+                String UUID = commonUtils.getUUID();
+                String newPassword = commonUtils.encryptDataMD5(userInfo.getPassword(),UUID);
+
+                userInfo.setSecurity(UUID);
+                userInfo.setPassword(newPassword);
+                userInfo.setCreateDate(new Date());
+                userInfo.setLastEditDate(new Date());
+                userInfo.setCreator("");
+                userInfo.setLastEditor("");
+                userInfo.setDeleted(Boolean.FALSE);
+                userInfo.setLock(Boolean.FALSE);
+                userInfo.setLogOut(Boolean.FALSE);
+
+                userInfoMapper.insert(userInfo);
+
+            }else {   //更新用户信息
+                UserInfo userInfo1 = userInfoMapper.selectByPrimaryKey(userInfo.getId());
+                userInfo1.setLastEditDate(new Date());
+                userInfo1.setLastEditor("");
+                userInfo1.setAdmin(userInfo.getAdmin());
+                userInfo1.setSex(userInfo.getSex());
+                userInfo1.setAddress(userInfo.getAddress());
+                userInfo1.setEmail(userInfo.getEmail());
+                userInfo1.setPhone(userInfo.getPhone());
+                userInfo1.setUserName(userInfo.getUserName());
+                userInfo1.setUserType(userInfo.getUserType());
+                userInfo1.setDescription(userInfo.getDescription());
+
+                userInfoMapper.updateByPrimaryKey(userInfo1);
+            }
+        }
+
     }
 
 }
