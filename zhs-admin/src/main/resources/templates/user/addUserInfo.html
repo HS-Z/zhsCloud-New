@@ -134,6 +134,11 @@
 
         form.on('submit(formButton)', function(data){
 
+            if (data.field.password != data.field.passwordAgain){
+                layer.msg("密码不一致，请确认后重新输入！",{icon: 5});
+                return false;
+            }
+
             $.ajax({
                 type: "Post",
                 url: "/userInfo/saveOrUpdate",
