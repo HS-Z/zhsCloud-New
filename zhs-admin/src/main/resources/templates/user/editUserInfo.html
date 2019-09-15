@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>用户编辑</title>
+
+    <script src="/include.js"></script>
+
+</head>
+<body>
+
+
+
+<div class="layui-fluid">
+
+    <form class="layui-form" action="">
+
+        <div class="layui-row">
+            <div class="layui-col-md12">
+                <label class="layui-form-label"></label>
+                <input type="text" name="id" th:value="${userInfo.id}" hidden>
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <div class="layui-col-md2">
+                <label class="layui-form-label" style="float: right">登陆账号<span style="color: red"> *</span></label>
+            </div>
+            <div class="layui-col-md9">
+                <input type="text" name="account" autocomplete="off" th:value="${userInfo.account}" class="layui-input" readonly>
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <div class="layui-col-md2">
+                <label class="layui-form-label" style="float: right">用户名称<span style="color: red"> *</span></label>
+            </div>
+            <div class="layui-col-md9">
+                <input type="text" name="userName" th:value="${userInfo.userName}" autocomplete="off" placeholder="请输入用户名称" class="layui-input" lay-verify="required" lay-reqtext="用户名称不能为空" >
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <div class="layui-col-md2">
+                <label class="layui-form-label" style="float: right">用户类型<span style="color: red"> *</span></label>
+            </div>
+            <div class="layui-col-md9">
+                <input type="text" name="userType" th:value="${userInfo.userName}" autocomplete="off" placeholder="请输入用户类型" class="layui-input" lay-verify="required" lay-reqtext="用户类型不能为空">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <div class="layui-col-md2">
+                <label class="layui-form-label" style="float: right">邮箱<span style="color: red"> *</span></label>
+            </div>
+            <div class="layui-col-md9">
+                <input type="text" name="email" th:value="${userInfo.email}" autocomplete="off" placeholder="请输入邮箱" class="layui-input" lay-verify="required|email" lay-reqtext="邮箱不能为空">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <div class="layui-col-md2">
+                <label class="layui-form-label" style="float: right">手机号码<span style="color: red"> *</span></label>
+            </div>
+            <div class="layui-col-md9">
+                <input type="text" name="phone" th:value="${userInfo.phone}" autocomplete="off" placeholder="请输入手机号码" class="layui-input" lay-verify="required|phone" lay-reqtext="手机号码不能为空">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <div class="layui-col-md2">
+                <label class="layui-form-label" style="float: right">住址</label>
+            </div>
+            <div class="layui-col-md9">
+                <input type="text" name="address" th:value="${userInfo.address}" autocomplete="off" placeholder="请输入住址" class="layui-input">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <div class="layui-col-md2">
+                <label class="layui-form-label" style="float: right">性别</label>
+            </div>
+            <div class="layui-col-md9">
+                <input type="radio" name="sex" value="MALE" title="男" th:checked="${userInfo.sex eq 'MALE' }" >
+                <input type="radio" name="sex" value="FEMALE" title="女" th:checked="${userInfo.sex eq 'FEMALE' }">
+                <input type="radio" name="sex" value="SECRECY" title="保密" th:checked="${userInfo.sex eq 'SECRECY' }">
+                <input type="radio" name="sex" value="UNKNOWN" title="未知" th:checked="${userInfo.sex eq 'UNKNOWN' }">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <div class="layui-col-md2">
+                <label class="layui-form-label" style="float: right">管理员</label>
+            </div>
+            <div class="layui-col-md9">
+                <input type="checkbox" name="admin" lay-skin="switch" lay-text="是|否" th:checked="${userInfo.admin}">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <div class="layui-col-md2">
+                <label class="layui-form-label" style="float: right">用户描述</label>
+            </div>
+            <div class="layui-col-md9">
+                <textarea placeholder="请输入用户描述" class="layui-textarea" name="description" th:text="${userInfo.description}"></textarea>
+            </div>
+        </div>
+
+        <div class="layui-form-item">
+            <div class="layui-col-md4 layui-col-md-offset5">
+                <button class="layui-btn" lay-submit lay-filter="formButton">立即提交</button>
+                <button onclick="parent.layer.closeAll()" class="layui-btn layui-btn-primary">取消</button>
+            </div>
+        </div>
+
+    </form>
+
+</div>
+
+
+</body>
+
+<script>
+
+    layui.use('form', function(){
+        var form = layui.form;
+
+        form.on('submit(formButton)', function(data){
+
+            $.ajax({
+                type: "Post",
+                url: "/userInfo/saveOrUpdate",
+                data: data.field,
+                dataType: "JSON",
+                success: function (data) {
+                    if (data.success) {
+                        layer.msg(data.msg,{icon: 6});
+                        window.location.reload();
+                    }else {
+                        layer.msg(data.msg,{icon: 5});
+                    }
+                }, error: function (data) {
+
+                }
+            });
+
+        });
+    });
+</script>
+
+
+</html>
