@@ -134,10 +134,10 @@ public class UserInfoController {
 
             userInfoService.saveOrUpdate(userInfo);
 
-            return Json.ok("用户信息已保存");
+            return Json.ok("操作成功！");
 
         }catch (Exception e){
-            return Json.fail("用户信息保存失败！");
+            return Json.fail("操作失败！");
         }
 
     }
