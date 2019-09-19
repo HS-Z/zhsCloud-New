@@ -143,4 +143,14 @@ public class UserInfoController {
     }
 
 
+    /**
+     * 账号的锁定与解锁
+     * @param isLock
+     */
+    @RequestMapping(value = "lock",method = RequestMethod.GET)
+    public void view(String isLock){
+        System.out.println(isLock);
+    }
+
+
 }

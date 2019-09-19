@@ -37,8 +37,9 @@
 
 <script th:inline="none">
 
-    layui.use(['table','layer'], function(){
-        var table = layui.table;
+    layui.use(['table','layer','form'], function(){
+        var table = layui.table,
+            form = layui.form;
 
         var params = formJson('searchForm');   //form 表单序列化并转json
 
@@ -59,6 +60,7 @@
 //                {field: 'email', title: '邮箱'},
                 {field: 'phone', title: '手机号码'},
                 {field: 'lastLoginTime', title: '最近登陆时间', sort: true, align:'center',templet:'<div>{{ layui.util.toDateString(d.lastLoginTime, "yyyy-MM-dd HH:mm:ss") }}</div>'},
+                {field:'isLock', title:'账号状态', unresize: true, templet: '#switchTpl' },
 //                {field: 'isAdmin', title: '管理员', sort: true},
                 {field: '', title: '操作', fixed: 'right', align:'center', toolbar: '#barDemo', width:200}
             ]],
@@ -160,6 +162,18 @@
             });
         });
 
+
+        //监听性别操作
+        form.on('switch(lockFilter)', function(obj){
+            alert("1");
+            alert(this.value);
+            window.location.href="#userInfo/lock?isLock="+ this.value ;
+            alert("2");
+
+            // layer.tips(this.value + ' ' + this.name + '：'+ obj.elem.checked, obj.othis);
+            // debugger;
+        });
+
     });
 
 
@@ -178,6 +192,10 @@
         <button class="layui-btn layui-btn-sm" lay-event="deleteChoose">删除选择</button>
         <button class="layui-btn layui-btn-sm" lay-event="add">新增</button>
     </div>
+</script>
+
+<script type="text/html" id="switchTpl">
+    <input type="checkbox" name="isLock" lay-skin="switch" lay-text="已锁定|未锁定" lay-filter="lockFilter" {{ d.isLock == '1' ? 'checked' : '' }} />
 </script>
 
 </html>
