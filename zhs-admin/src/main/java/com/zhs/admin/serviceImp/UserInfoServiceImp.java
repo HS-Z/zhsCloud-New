@@ -107,4 +107,32 @@ public class UserInfoServiceImp extends CommonService implements UserInfoService
 
     }
 
+
+    /**
+     * 账号的锁定与解锁
+     * @param id  用户id
+     * @param isLock   //锁定状态
+     */
+    @Override
+    public void lock(Long id, Boolean isLock) {
+        if (id == null){
+            return;
+        }
+
+        UserInfo userInfo = findById(id);
+        if (userInfo != null){
+
+            userInfo.setLock(isLock);
+
+            if (isLock){  //账号锁定
+                userInfo.setLockTime(new Date());
+            }else {   //账号解锁
+                userInfo.setLockTime(null);
+            }
+
+            userInfoMapper.updateByPrimaryKey(userInfo);
+        }
+
+    }
+
 }

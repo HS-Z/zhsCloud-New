@@ -23,5 +23,7 @@ public interface UserInfoService {
 
     void saveOrUpdate(UserInfo userInfo);
 
+    void lock(Long id, Boolean isLock);
+
 
 }

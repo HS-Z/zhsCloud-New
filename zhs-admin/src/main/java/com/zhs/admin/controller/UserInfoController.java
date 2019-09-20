@@ -145,11 +145,28 @@ public class UserInfoController {
 
     /**
      * 账号的锁定与解锁
-     * @param isLock
+     * @param id  用户id
+     * @param isLock  锁定状态
      */
-    @RequestMapping(value = "lock",method = RequestMethod.GET)
-    public void view(String isLock){
-        System.out.println(isLock);
+    @RequestMapping(value = "lock", method = {RequestMethod.POST})
+    @ResponseBody
+    public Json lock(Long id, Boolean isLock){
+        String msg;
+
+        try {
+
+            if (isLock){
+                msg = "账号已锁定！";
+            }else {
+                msg = "账号已解锁！";
+            }
+
+            userInfoService.lock(id, isLock);
+
+            return Json.ok(msg);
+        }catch (Exception e){
+            return Json.fail();
+        }
     }
 
 
