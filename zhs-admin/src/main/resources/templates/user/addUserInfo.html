@@ -146,8 +146,9 @@
                 dataType: "JSON",
                 success: function (data) {
                     if (data.success) {
-                        layer.msg(data.msg,{icon: 6});
-                        window.location.reload();
+                        layer.msg(data.msg,{icon: 1});
+                        parent.layer.closeAll();
+                        parent.window.location.reload();
                     }else {
                         layer.msg(data.msg,{icon: 5});
                     }
@@ -155,6 +156,8 @@
 
                 }
             });
+
+            return false;
 
         });
     });

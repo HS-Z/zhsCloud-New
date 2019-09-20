@@ -9,102 +9,74 @@
 </head>
 <body>
 
+<div style="padding: 20px; background-color: #F2F2F2;">
+    <div class="layui-row layui-col-space15">
+        <div class="layui-col-md12">
+            <div class="layui-card">
+                <div class="layui-card-header">
+                    <div class="layui-col-md1">用户名：</div>
+                    <span th:text="${userInfo.userName}"></span>
+                </div>
+                <div class="layui-card-header">
+                    <div class="layui-col-md1">用户类型：</div>
+                    <span th:text="${userInfo.userType}"></span>
+                </div>
+                <div class="layui-card-header">
+                    <div class="layui-col-md1">账号：</div>
+                    <span th:text="${userInfo.account}"></span>
+                </div>
+                <div class="layui-card-header" th:if="${userInfo.createDate != null}">
+                    <div class="layui-col-md1">注册时间：</div>
+                    <span th:if="${userInfo.createDate != null}" th:text="${#dates.format(userInfo.createDate, 'yyyy-MM-dd HH:mm')}"></span>
+                </div>
+                <div class="layui-card-header">
+                    <div class="layui-col-md1">性别：</div>
+                    <span th:text="${userInfo.sex}"></span>
+                </div>
+                <div class="layui-card-header">
+                    <div class="layui-col-md1">邮箱：</div>
+                    <span th:text="${userInfo.email}"></span>
+                </div>
+                <div class="layui-card-header">
+                    <div class="layui-col-md1">手机号码：</div>
+                    <span th:text="${userInfo.phone}"></span>
+                </div>
+                <div class="layui-card-header">
+                    <div class="layui-col-md1">住址：</div>
+                    <span th:text="${userInfo.address}"></span>
+                </div>
+                <div class="layui-card-header">
+                    <div class="layui-col-md1">管理员：</div>
+                    <span th:text="${userInfo.admin ? '是':'否' }"></span>
+                </div>
+                <div class="layui-card-header">
+                    <div class="layui-col-md1">是否锁定：</div>
+                    <span th:text="${userInfo.lock ? '是':'否' }"></span>
+                </div>
+                <div class="layui-card-header" th:if="${userInfo.lockTime != null}">
+                    <div class="layui-col-md1">锁定时间：</div>
+                    <span th:if="${userInfo.lockTime != null}" th:text="${#dates.format(userInfo.lockTime, 'yyyy-MM-dd HH:mm')}"></span>
+                </div>
+                <div class="layui-card-header">
+                    <div class="layui-col-md1">是否注销：</div>
+                    <span th:text="${userInfo.logOut ? '是':'否' }"></span>
+                </div>
+                <div class="layui-card-header" th:if="${userInfo.logOutTime != null}">
+                    <div class="layui-col-md1">锁定时间：</div>
+                    <span th:if="${userInfo.logOutTime != null}" th:text="${#dates.format(userInfo.logOutTime, 'yyyy-MM-dd HH:mm')}"></span>
+                </div>
+                <div class="layui-card-body">
+                    <div class="layui-row">
+                        <div class="layui-col-md1">描述：</div>
+                        <div class="layui-col-md11"><span th:text="${userInfo.description}"></span></div>
+                    </div>
+                </div>
 
-<div class="weadmin-body">
-
-    <form class="layui-form layui-form-pane">
-        <div class="layui-form-item">
-            <label class="layui-form-label">用户名</label>
-            <div class="layui-input-block">
-                <input type="text" class="layui-input" th:value="${userInfo.userName}" readonly>
             </div>
         </div>
-        <div class="layui-form-item">
-            <label class="layui-form-label">用户类型</label>
-            <div class="layui-input-block">
-                <input type="text" class="layui-input" th:value="${userInfo.userType}" readonly>
-            </div>
-        </div>
-        <div class="layui-form-item">
-            <label class="layui-form-label">账号</label>
-            <div class="layui-input-block">
-                <input type="text" class="layui-input" th:value="${userInfo.account}" readonly>
-            </div>
-        </div>
-        <div class="layui-form-item" th:if="${userInfo.createDate != null}">
-            <label class="layui-form-label">注册时间</label>
-            <div class="layui-input-block">
-                <input type="text" class="layui-input" th:if="${userInfo.createDate != null}" th:value="${#dates.format(userInfo.createDate, 'yyyy-MM-dd HH:mm')}" readonly>
-            </div>
-        </div>
-        <div class="layui-form-item">
-            <label class="layui-form-label">性别</label>
-            <div class="layui-input-block">
-                <input type="text" class="layui-input" th:value="${userInfo.sex}" readonly>
-            </div>
-        </div>
-        <div class="layui-form-item">
-            <label class="layui-form-label">邮箱</label>
-            <div class="layui-input-block">
-                <input type="text" class="layui-input" th:value="${userInfo.email}" readonly>
-            </div>
-        </div>
-        <div class="layui-form-item">
-            <label class="layui-form-label">手机号码</label>
-            <div class="layui-input-block">
-                <input type="text" class="layui-input" th:value="${userInfo.phone}" readonly>
-            </div>
-        </div>
-        <div class="layui-form-item">
-            <label class="layui-form-label">住址</label>
-            <div class="layui-input-block">
-                <input type="text" class="layui-input" th:value="${userInfo.address}" readonly>
-            </div>
-        </div>
-        <div class="layui-form-item">
-            <label class="layui-form-label">是否管理员</label>
-            <div class="layui-input-block">
-                <input type="text" class="layui-input" th:value="${userInfo.admin ? '是':'否' }" readonly>
-            </div>
-        </div>
-        <div class="layui-form-item">
-            <label class="layui-form-label">是否锁定</label>
-            <div class="layui-input-block">
-                <input type="text" class="layui-input" th:value="${userInfo.lock ? '是':'否' }" readonly>
-            </div>
-        </div>
-        <div class="layui-form-item" th:if="${userInfo.lockTime != null}">
-            <label class="layui-form-label">锁定时间</label>
-            <div class="layui-input-block">
-                <input type="text" class="layui-input" th:if="${userInfo.lockTime != null}" th:value="${#dates.format(userInfo.lockTime, 'yyyy-MM-dd HH:mm')}" readonly>
-            </div>
-        </div>
-        <div class="layui-form-item">
-            <label class="layui-form-label">是否注销</label>
-            <div class="layui-input-block">
-                <input type="text" class="layui-input" th:value="${userInfo.logOut ? '是':'否' }" readonly>
-            </div>
-        </div>
-        <div class="layui-form-item" th:if="${userInfo.logOutTime != null}">
-            <label class="layui-form-label">注销时间</label>
-            <div class="layui-input-block">
-                <input type="text" class="layui-input" th:if="${userInfo.logOutTime != null}" th:value="${#dates.format(userInfo.logOutTime, 'yyyy-MM-dd HH:mm')}" readonly>
-            </div>
-        </div>
-        <div class="layui-form-item">
-            <label class="layui-form-label">描述</label>
-            <div class="layui-input-block">
-                <textarea type="text" class="layui-textarea" th:text="${userInfo.description}"  readonly></textarea>
-            </div>
-        </div>
-    </form>
-
+    </div>
 </div>
 
-
 </body>
-
-
-
 
 </html>
