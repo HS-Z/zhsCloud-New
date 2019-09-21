@@ -53,6 +53,7 @@
             where: params,
             toolbar: '#toolbarDemo',
             cols: [[
+                {type: 'checkbox', fixed: 'left'},
                 {field: 'id', title: 'id', hide: true},
                 {field: 'account', title: '账号',fixed: 'left'},
                 {field: 'userName', title: '用户名'},
@@ -81,7 +82,6 @@
         table.on('tool(tableFilter)', function(obj){
             var data = obj.data; //获得当前行数据
             var layEvent = obj.event; //获得 lay-event 对应的值（也可以是表头的 event 参数对应的值）
-            var tr = obj.tr; //获得当前行 tr 的DOM对象
 
             if(layEvent === 'detail'){ //查看
 
@@ -124,7 +124,7 @@
         table.on('toolbar(tableFilter)', function(obj){
             var checkStatus = table.checkStatus(obj.config.id);
 
-            if(obj.event === 'add'){ //查看
+            if(obj.event === 'add'){   //新增
 
                 layer.open({
                     title: '用户新增',
@@ -133,20 +133,30 @@
                     maxmin: true,
                     content: '/userInfo/toAddOrEdit'
                 });
-            }
 
-            switch(obj.event){
-                case 'getCheckData':
-                    var data = checkStatus.data;
-                    layer.alert(JSON.stringify(data));
-                    break;
-                case 'getCheckLength':
-                    var data = checkStatus.data;
-                    layer.msg('选中了：'+ data.length + ' 个');
-                    break;
-                case 'isAll':
-                    layer.msg(checkStatus.isAll ? '全选': '未全选');
-                    break;
+            }else if (obj.event === 'deleteChoose'){    //删除选中行
+
+                var data = checkStatus.data;    //获取选中行数据
+                var length = checkStatus.data.length;   //选中行的数目
+                if (length <= 0){
+                    layer.msg("请选择要删除的数据 !");
+                    return;
+                }
+
+                var ids = [];
+                for (var i =0;i < length; i++){
+                    ids.push(data[i].id);
+                }
+
+                $.post("/userInfo/deleteChoose", {ids: JSON.stringify(ids)}, function (data) {
+                    if (data.success) {
+                        layer.msg(data.msg,{icon: 1,time: 1000});
+                        setTimeout(function(){ window.location.reload(); }, 2000);   //2s后刷新列表
+                    } else {
+                        layer.msg("操作失败！",{icon: 2, time: 1000});
+                    }
+                }, "json");
+
             }
         });
         
@@ -196,7 +206,7 @@
 
 <script type="text/html" id="toolbarDemo">
     <div class="layui-btn-container">
-        <!--<button class="layui-btn layui-btn-sm" lay-event="deleteChoose">删除选择</button>-->
+        <button class="layui-btn layui-btn-sm" lay-event="deleteChoose">删除选择</button>
         <button class="layui-btn layui-btn-sm" lay-event="add"> 新增 </button>
     </div>
 </script>

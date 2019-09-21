@@ -1,5 +1,6 @@
 package com.zhs.admin.controller;
 
+import com.alibaba.fastjson.JSON;
 import com.zhs.admin.model.UserInfo;
 import com.zhs.admin.service.UserInfoService;
 import com.zhs.common.model.Json;
@@ -13,6 +14,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 
 @Controller
@@ -166,6 +169,27 @@ public class UserInfoController {
             return Json.ok(msg);
         }catch (Exception e){
             return Json.fail();
+        }
+    }
+
+
+
+    @RequestMapping(value = "deleteChoose", method = {RequestMethod.POST})
+    @ResponseBody
+    public Json deleteChoose(String ids){
+        try {
+            if (StringUtils.isBlank(ids)){
+                return Json.fail("请选择要删除的数据！");
+            }
+
+            List<Long> idList = JSON.parseArray(ids, Long.class);
+            for (Long id:idList){
+                userInfoService.deleteById(id);
+            }
+
+            return Json.ok("操作成功！");
+        }catch (Exception e){
+            return Json.fail("操作失败！");
         }
     }
 

@@ -34,6 +34,7 @@
 		<shiro.version>1.4.0</shiro.version>
 		<p6spy.version>3.8.3</p6spy.version>
 		<pagehelper.version>1.2.12</pagehelper.version>
+		<fastjson.version>1.2.61</fastjson.version>
 	</properties>
 
 	<dependencies>
