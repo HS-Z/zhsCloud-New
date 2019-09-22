@@ -47,18 +47,18 @@
         </div>
         <div class="layui-form-item">
             <div class="layui-col-md2">
-                <label class="layui-form-label" style="float: right">邮箱<span style="color: red"> *</span></label>
-            </div>
-            <div class="layui-col-md9">
-                <input type="text" name="email" th:value="${userInfo.email}" autocomplete="off" placeholder="请输入邮箱" class="layui-input" lay-verify="required|email" lay-reqtext="邮箱不能为空">
-            </div>
-        </div>
-        <div class="layui-form-item">
-            <div class="layui-col-md2">
                 <label class="layui-form-label" style="float: right">手机号码<span style="color: red"> *</span></label>
             </div>
             <div class="layui-col-md9">
                 <input type="text" name="phone" th:value="${userInfo.phone}" autocomplete="off" placeholder="请输入手机号码" class="layui-input" lay-verify="required|phone" lay-reqtext="手机号码不能为空">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <div class="layui-col-md2">
+                <label class="layui-form-label" style="float: right">邮箱</label>
+            </div>
+            <div class="layui-col-md9">
+                <input type="text" name="email" th:value="${userInfo.email}" autocomplete="off" placeholder="请输入邮箱" class="layui-input" lay-verify="email">
             </div>
         </div>
         <div class="layui-form-item">
