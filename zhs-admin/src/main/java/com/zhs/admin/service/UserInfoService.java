@@ -21,6 +21,8 @@ public interface UserInfoService {
 
     void deleteById(Long id);
 
+    void deleteByIdAnother(Long id);
+
     void saveOrUpdate(UserInfo userInfo);
 
     void lock(Long id, Boolean isLock);

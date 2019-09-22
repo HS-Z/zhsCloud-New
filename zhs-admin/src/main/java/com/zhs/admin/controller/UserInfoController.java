@@ -184,7 +184,7 @@ public class UserInfoController {
 
             List<Long> idList = JSON.parseArray(ids, Long.class);
             for (Long id:idList){
-                userInfoService.deleteById(id);
+                userInfoService.deleteByIdAnother(id);
             }
 
             return Json.ok("操作成功！");

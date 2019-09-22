@@ -17,6 +17,7 @@
         <if test="@com.zhs.common.utils.CommonUtils@isNotEmpty(name)">
             and ( user_name like CONCAT('%', CONCAT(#{name}, '%')) or account like CONCAT('%', CONCAT(#{name}, '%'))  )
         </if>
+        and deleted != '1'
     </select>
 
 </mapper>

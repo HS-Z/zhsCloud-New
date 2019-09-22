@@ -61,10 +61,28 @@ public class UserInfoServiceImp extends CommonService implements UserInfoService
         return responsePageInfo;
     }
 
+
+    /**
+     * 物理删除
+     * @param id  用户id
+     */
     @Override
     public void deleteById(Long id) {
         userInfoMapper.deleteByPrimaryKey(id);
     }
+
+
+    /**
+     * 逻辑删除
+     * @param id  用户id
+     */
+    @Override
+    public void deleteByIdAnother(Long id) {
+        UserInfo userInfo =  userInfoMapper.selectByPrimaryKey(id);
+        userInfo.setDeleted(Boolean.TRUE);
+        userInfoMapper.updateByPrimaryKey(userInfo);
+    }
+
 
     @Override
     public void saveOrUpdate(UserInfo userInfo) {
