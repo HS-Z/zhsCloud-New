@@ -30,7 +30,7 @@ public class ShiroConfig {
 
 
         //拦截器.
-        Map<String,String> filterChainDefinitionMap = new LinkedHashMap<>();
+        Map<String, String> filterChainDefinitionMap = new LinkedHashMap<>();
 
         /*// 配置不会被拦截的链接 顺序判断
         filterChainDefinitionMap.put("/static/**", "anon");  //设置html页面访问static下的静态资源不被拦截
@@ -57,7 +57,7 @@ public class ShiroConfig {
 
 
     @Bean
-    public MyShiroRealm myShiroRealm(){
+    public MyShiroRealm myShiroRealm() {
 
         MyShiroRealm myShiroRealm = new MyShiroRealm();
 
@@ -82,6 +82,7 @@ public class ShiroConfig {
 
     /**
      * 密码匹配凭证管理器
+     *
      * @return
      */
     @Bean

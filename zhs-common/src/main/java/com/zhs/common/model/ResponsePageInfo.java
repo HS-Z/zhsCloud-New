@@ -4,15 +4,31 @@ import java.util.List;
 
 public class ResponsePageInfo {
 
-    private String code;    //查询返回状态码
+    /**
+     * 查询返回状态码
+     */
+    private String code;
 
-    private String msg;    //消息
+    /**
+     * 消息
+     */
+    private String msg;
 
-    private Long count;    //总记录数
+    /**
+     * 总记录数
+     */
+    private Long count;
 
-    private Object footer;  //页脚信息
+    /**
+     * 页脚信息
+     */
+    private Object footer;
 
-    private List<Object> data;  //当前页的记录集合
+    /**
+     * 当前页的记录集合
+     */
+    private List<Object> data;
+
 
     public String getCode() {
         return code;

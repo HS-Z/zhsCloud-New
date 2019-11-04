@@ -21,26 +21,26 @@ public class LoginController {
     private UserInfoService userInfoService;
 
 
-    @RequestMapping(value = "login",method = RequestMethod.GET)
-    public String login(){
+    @RequestMapping(value = "login", method = RequestMethod.GET)
+    public String login() {
         return "login";
     }
 
 
-    @RequestMapping(value = "index",method = RequestMethod.GET)
-    public String index(){
+    @RequestMapping(value = "index", method = RequestMethod.GET)
+    public String index() {
         return "index";
     }
 
 
-    @RequestMapping(value = "loginSystem",method = {RequestMethod.POST})
+    @RequestMapping(value = "loginSystem", method = {RequestMethod.POST})
     @ResponseBody
-    public Json loginSystem(@RequestParam("account") String account, @RequestParam("password") String password){
+    public Json loginSystem(@RequestParam("account") String account, @RequestParam("password") String password) {
         try {
             UserInfo userInfo = userInfoService.findByAccount("zhs");
             UserInfo userInfo1 = userInfoService.findById(1L);
             return Json.ok();
-        }catch (Exception e){
+        } catch (Exception e) {
             return Json.fail("登陆失败，请联系管理员！");
         }
     }

@@ -9,25 +9,45 @@ import java.util.Date;
 /**
  * Created by Zhang on 2019/8/9.
  */
-public class CommonModel implements Serializable{
+public class CommonModel implements Serializable {
 
 
+    /**
+     * 使用JDBC 的方式获取数据库自增的主键值
+     */
     @Id
-    @KeySql(useGeneratedKeys = true)    //使用JDBC 的方式获取数据库自增的主键值
+    @KeySql(useGeneratedKeys = true)
     private Long id;
 
-    private String creator;    //创建人
+    /**
+     * 创建人
+     */
+    private String creator;
 
-    private String lastEditor;    //最后编辑人
+    /**
+     * 最后编辑人
+     */
+    private String lastEditor;
 
-    private Date createDate;    //创建时间
+    /**
+     * 创建时间
+     */
+    private Date createDate;
 
-    private Date lastEditDate;    //最近更新时间
+    /**
+     * 最近更新时间
+     */
+    private Date lastEditDate;
 
-    private Boolean deleted = Boolean.FALSE;    //删除标记，默认为否
+    /**
+     * 删除标记，默认为否
+     */
+    private Boolean deleted = Boolean.FALSE;
 
-    private String description;    //描述
-
+    /**
+     * 描述
+     */
+    private String description;
 
 
     public Long getId() {

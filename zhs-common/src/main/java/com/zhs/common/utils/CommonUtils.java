@@ -18,20 +18,22 @@ public class CommonUtils {
 
     /**
      * 获取 UUID
-     * @return  UUID
+     *
+     * @return UUID
      */
-    public String getUUID(){
-        return UUID.randomUUID().toString().replace("-","");
+    public String getUUID() {
+        return UUID.randomUUID().toString().replace("-", "");
     }
 
 
     /**
      * 对数据进行加密
+     *
      * @param data 要加密的数据
      * @param salt 加密的盐值
      * @return 加密后的值
      */
-    public String encryptDataMD5(String data, String salt){
+    public String encryptDataMD5(String data, String salt) {
 
         ByteSource newSalt = ByteSource.Util.bytes(salt);
 
@@ -52,32 +54,33 @@ public class CommonUtils {
 
     /**
      * 判断一个对象是否为null或为空
+     *
      * @param o
      * @return
      */
-    public static boolean isEmpty(Object o){
+    public static boolean isEmpty(Object o) {
 
-        if (o == null){
+        if (o == null) {
             return true;
         }
 
-        if (o instanceof String){
-            if (StringUtils.isBlank(o.toString())){
+        if (o instanceof String) {
+            if (StringUtils.isBlank(o.toString())) {
                 return true;
             }
-        }else if (o instanceof Collection){
-            if ( ( (Collection) o ).isEmpty()){
+        } else if (o instanceof Collection) {
+            if (((Collection) o).isEmpty()) {
                 return true;
             }
-        }else if (o.getClass().isArray()){
-            if ( ((Object[]) o).length == 0 ){
+        } else if (o.getClass().isArray()) {
+            if (((Object[]) o).length == 0) {
                 return true;
             }
-        }else if (o instanceof Map){
-            if (((Map) o).isEmpty()){
+        } else if (o instanceof Map) {
+            if (((Map) o).isEmpty()) {
                 return true;
             }
-        }else {
+        } else {
             return false;
         }
         return false;
@@ -86,10 +89,11 @@ public class CommonUtils {
 
     /**
      * 判断一个对象是否为null或为空
+     *
      * @param o
      * @return
      */
-    public static boolean isNotEmpty(Object o){
+    public static boolean isNotEmpty(Object o) {
         return !isEmpty(o);
     }
 

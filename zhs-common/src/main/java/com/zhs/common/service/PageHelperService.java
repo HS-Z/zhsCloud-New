@@ -16,16 +16,17 @@ public class PageHelperService {
 
     /**
      * 返回结果的分页处理
+     *
      * @param page
      * @return
      */
-    public ResponsePageInfo pageHelper(Page page, List dataList){
+    public ResponsePageInfo pageHelper(Page page, List dataList) {
 
         ResponsePageInfo responsePageInfo = new ResponsePageInfo();
         responsePageInfo.setCode("0");
         responsePageInfo.setMsg("");
 
-        if (page.size() < 0){
+        if (page.size() < 0) {
             throw new RuntimeException("数据分页错误");
         }
 
@@ -39,7 +40,6 @@ public class PageHelperService {
 
         return responsePageInfo;
     }
-
 
 
 }

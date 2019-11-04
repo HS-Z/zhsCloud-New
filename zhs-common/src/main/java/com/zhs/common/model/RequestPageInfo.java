@@ -2,13 +2,25 @@ package com.zhs.common.model;
 
 public class RequestPageInfo {
 
-    private int page;    //当前页
+    /**
+     * 当前页
+     */
+    private int page;
 
-    private int limit;    //每页查询数据量
+    /**
+     * 每页显示的数量
+     */
+    private int limit;
 
-    private String sort = "desc";    //排序的方式
+    /**
+     * 排序的方式
+     */
+    private String sort = "desc";
 
-    private String sortField;    //排序的属性
+    /**
+     * 排序的属性
+     */
+    private String sortField;
 
     public int getPage() {
         return page;

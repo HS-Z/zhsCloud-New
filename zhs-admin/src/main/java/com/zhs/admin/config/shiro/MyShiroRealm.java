@@ -19,6 +19,7 @@ public class MyShiroRealm extends AuthorizingRealm {
 
     /**
      * 权限控制
+     *
      * @param principalCollection
      * @return
      */
@@ -29,10 +30,11 @@ public class MyShiroRealm extends AuthorizingRealm {
             return null;
         }
 
-        String account= (String) principalCollection.getPrimaryPrincipal();  //登陆账号
+        //登陆账号
+        String account = (String) principalCollection.getPrimaryPrincipal();
 
-        UserInfo userInfo=userInfoService.findByAccount(account);
-        if (userInfo == null){
+        UserInfo userInfo = userInfoService.findByAccount(account);
+        if (userInfo == null) {
             return null;
         }
 
@@ -45,6 +47,7 @@ public class MyShiroRealm extends AuthorizingRealm {
 
     /**
      * 用户认证
+     *
      * @param authenticationToken
      * @return
      * @throws AuthenticationException
@@ -56,15 +59,17 @@ public class MyShiroRealm extends AuthorizingRealm {
             return null;
         }
 
-        String account=(String) authenticationToken.getPrincipal();  //登陆账号
+        //登陆账号
+        String account = (String) authenticationToken.getPrincipal();
 
-        UserInfo userInfo=userInfoService.findByAccount(account);
+        UserInfo userInfo = userInfoService.findByAccount(account);
 
-        if (userInfo == null){  //账号不存在
+        if (userInfo == null) {  //账号不存在
             throw new UnknownAccountException();
         }
 
-        if (Boolean.TRUE.equals(userInfo.getLogOut())){  //账号已注销
+        //账号已注销
+        if (Boolean.TRUE.equals(userInfo.getLogOut())) {
             throw new UnknownAccountException();
         }
 
@@ -74,11 +79,10 @@ public class MyShiroRealm extends AuthorizingRealm {
          */
 
 
-
         // 获取盐值
         ByteSource salt = ByteSource.Util.bytes(userInfo.getSecurity());
 
-        SimpleAuthenticationInfo authenticationInfo=new SimpleAuthenticationInfo(account, userInfo.getPassword(), salt, getName());
+        SimpleAuthenticationInfo authenticationInfo = new SimpleAuthenticationInfo(account, userInfo.getPassword(), salt, getName());
 
         return authenticationInfo;
     }

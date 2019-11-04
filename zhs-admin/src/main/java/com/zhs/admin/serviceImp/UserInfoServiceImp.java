@@ -24,6 +24,7 @@ public class UserInfoServiceImp extends CommonService implements UserInfoService
 
     /**
      * 根据账号查询用户信息
+     *
      * @param account
      * @return
      */
@@ -40,6 +41,7 @@ public class UserInfoServiceImp extends CommonService implements UserInfoService
 
     /**
      * 保存用户信息
+     *
      * @param userInfo
      */
     @Override
@@ -55,16 +57,17 @@ public class UserInfoServiceImp extends CommonService implements UserInfoService
     @Override
     public ResponsePageInfo queryUserInfoList(RequestPageInfo requestPageInfo, QueryInfo queryInfo) {
 
-        Page page = PageHelper.startPage(requestPageInfo.getPage(),requestPageInfo.getLimit());
+        Page page = PageHelper.startPage(requestPageInfo.getPage(), requestPageInfo.getLimit());
         List userInfoList = userInfoMapper.queryUserInfoList(queryInfo);
-        ResponsePageInfo responsePageInfo = pageHelperService.pageHelper(page,userInfoList);
+        ResponsePageInfo responsePageInfo = pageHelperService.pageHelper(page, userInfoList);
         return responsePageInfo;
     }
 
 
     /**
      * 物理删除
-     * @param id  用户id
+     *
+     * @param id 用户id
      */
     @Override
     public void deleteById(Long id) {
@@ -74,11 +77,12 @@ public class UserInfoServiceImp extends CommonService implements UserInfoService
 
     /**
      * 逻辑删除
-     * @param id  用户id
+     *
+     * @param id 用户id
      */
     @Override
     public void deleteByIdAnother(Long id) {
-        UserInfo userInfo =  userInfoMapper.selectByPrimaryKey(id);
+        UserInfo userInfo = userInfoMapper.selectByPrimaryKey(id);
         userInfo.setDeleted(Boolean.TRUE);
         userInfoMapper.updateByPrimaryKey(userInfo);
     }
@@ -87,12 +91,12 @@ public class UserInfoServiceImp extends CommonService implements UserInfoService
     @Override
     public void saveOrUpdate(UserInfo userInfo) {
 
-        if (userInfo != null){
+        if (userInfo != null) {
 
-            if (userInfo.getId() == null){   //新增用户信息
+            if (userInfo.getId() == null) {   //新增用户信息
 
                 String UUID = commonUtils.getUUID();
-                String newPassword = commonUtils.encryptDataMD5(userInfo.getPassword(),UUID);
+                String newPassword = commonUtils.encryptDataMD5(userInfo.getPassword(), UUID);
 
                 userInfo.setSecurity(UUID);
                 userInfo.setPassword(newPassword);
@@ -106,7 +110,7 @@ public class UserInfoServiceImp extends CommonService implements UserInfoService
 
                 userInfoMapper.insert(userInfo);
 
-            }else {   //更新用户信息
+            } else {   //更新用户信息
                 UserInfo userInfo1 = userInfoMapper.selectByPrimaryKey(userInfo.getId());
                 userInfo1.setLastEditDate(new Date());
                 userInfo1.setLastEditor("");
@@ -128,23 +132,24 @@ public class UserInfoServiceImp extends CommonService implements UserInfoService
 
     /**
      * 账号的锁定与解锁
-     * @param id  用户id
-     * @param isLock   //锁定状态
+     *
+     * @param id     用户id
+     * @param isLock //锁定状态
      */
     @Override
     public void lock(Long id, Boolean isLock) {
-        if (id == null){
+        if (id == null) {
             return;
         }
 
         UserInfo userInfo = findById(id);
-        if (userInfo != null){
+        if (userInfo != null) {
 
             userInfo.setLock(isLock);
 
-            if (isLock){  //账号锁定
+            if (isLock) {  //账号锁定
                 userInfo.setLockTime(new Date());
-            }else {   //账号解锁
+            } else {   //账号解锁
                 userInfo.setLockTime(null);
             }
 

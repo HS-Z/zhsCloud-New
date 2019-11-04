@@ -2,9 +2,8 @@ package com.zhs.common.enumerate;
 
 public enum LogTypeEnum {
 
-    SYSTEM("系统操作"),
-    USER("用户操作"),
-    ;
+    SYSTEM("系统"),
+    USER("用户"),;
 
     private String name;
 

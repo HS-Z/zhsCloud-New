@@ -11,8 +11,7 @@ public enum LogOperateTypeEnum {
     SIGN_OUT("退出"),
     LOG_OUT("注销"),
     LOG_ON("注册"),
-    UPDATE_PASSWORD("更改密码"),
-    ;
+    UPDATE_PASSWORD("更改密码");
 
     private String name;
 

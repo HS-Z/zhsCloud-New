@@ -48,9 +48,8 @@ public class Json implements Serializable {
     }
 
 
-
     public Json addOthers(String key, Object other) {
-        if (this.others == null){
+        if (this.others == null) {
             this.others = new HashMap<>();
         }
         this.others.put(key, other);

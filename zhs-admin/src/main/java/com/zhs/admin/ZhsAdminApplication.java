@@ -12,7 +12,7 @@ import tk.mybatis.spring.annotation.MapperScan;
 @SpringBootApplication
 @EnableEurekaClient
 @MapperScan(basePackages = "com.zhs.admin.mapper")
-public class ZhsAdminApplication extends ZhsCommonApplication{
+public class ZhsAdminApplication extends ZhsCommonApplication {
 
     public static void main(String[] args) {
         SpringApplication.run(ZhsAdminApplication.class, args);
